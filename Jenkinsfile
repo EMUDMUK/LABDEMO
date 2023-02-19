@@ -1,9 +1,13 @@
 pipeline {
      agent any
      stages {
-          stage("Compile") {
+          stage("chmod") {
                steps {
-                    git update-index --chmod=+x ./gradlew 
+                    sh "git update-index --chmod=+x ./gradlew"
+               }
+          }
+          stage("Unit test") {
+               steps {
                     sh "./gradlew compileJava"
                }
           }
