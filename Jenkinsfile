@@ -8,7 +8,7 @@ pipeline {
           }
           stage("Unit test") {
                steps {
-                    sh "./gradlew compileJava"
+                    sh "sudo ./gradlew compileJava"
                }
           }
      }
