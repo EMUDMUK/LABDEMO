@@ -30,7 +30,7 @@ pipeline {
     stage('Run maven') {
       steps {
         container('maven') {
-          sh 'maven -version'
+          sh 'mvn -version'
         }
       }
     }
