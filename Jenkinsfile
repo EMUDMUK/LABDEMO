@@ -37,7 +37,7 @@ pipeline {
      stage('Run docker') {
       steps {
         container('docker') {
-          sh 'docker -version'
+          sh 'docker version'
         }
       }
     }
