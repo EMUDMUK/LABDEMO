@@ -1,5 +1,5 @@
 pipeline {
-     agent kubernetes
+    agent { label 'kubernetes' }
      stages {
           stage("Unit test") {
                steps {
