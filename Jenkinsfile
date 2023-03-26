@@ -6,6 +6,11 @@ pipeline {
         kind: Pod
         spec:
           containers:
+          - name: kubectl
+            image: joshendriks/alpine-k8s
+            command:
+            - /bin/cat
+            tty: true 
           - name: maven
             image: maven:alpine
             command:
@@ -41,5 +46,13 @@ pipeline {
         }
       }
     }
+    stage('Deploy App to Kubernetes') {     
+      steps {
+        container('kubectl') {
+          withCredentials([file(credentialsId: 'mykubeconfig', variable: 'KUBECONFIG')]) {
+            sh 'kubectl cluster-info'
+          }
+        }
+      }
   }
 }
