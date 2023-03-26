@@ -51,6 +51,7 @@ pipeline {
         container('kubectl') {
           withCredentials([file(credentialsId: 'mykubeconfig', variable: 'KUBECONFIG')]) {
             sh 'kubectl cluster-info'
+            sh 'kubectl apply -f nginx.yaml'
           }
         }
       }
