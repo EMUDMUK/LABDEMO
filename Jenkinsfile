@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Back-end') {
             agent {
-                docker { image 'maven:3-alpine' }
+                kubernetes { image 'maven:3-alpine' }
             }
             steps {
                 sh 'mvn --version'
@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Front-end') {
             agent {
-                docker { image 'node:7-alpine' }
+                kubernetes { image 'node:7-alpine' }
             }
             steps {
                 sh 'node --version'
